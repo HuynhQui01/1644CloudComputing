@@ -12,7 +12,7 @@
     $total = null;
     $sum = null;        
 
-    $sql = "SELECT * FROM product WHERE pID = '$pID'";
+    $sql = "SELECT * FROM toys WHERE pID = '$pID'";
     $re = $dblink->query($sql);
     $row = $re->fetch_assoc();
     $pName = $row['pName']??"";

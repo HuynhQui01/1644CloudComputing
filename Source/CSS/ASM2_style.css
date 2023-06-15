@@ -78,12 +78,12 @@ nav .logo img{
     color: #000;
 }
 .nav-link{
-    font-size: 20px;
-    color: #FFF;
-    background-color: darkgray;
-    padding: 5px 10px;
-    transition: 0.3s;
-    border-radius: 10px;
+    font-size: 20px !important;
+    color: #FFF!important;
+    background-color: darkgray!important;
+    padding: 5px 10px !important;
+    transition: 0.3s !important;
+    border-radius: 10px !important;
 }
 .line{
     width: 800px;

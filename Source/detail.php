@@ -9,7 +9,7 @@ require_once './header.php';
     $quantity = $_GET['quantity']??"";
     $update = $_GET['update']??"";
     
-    $sql = "SELECT * FROM product WHERE pID = '$pid'";
+    $sql = "SELECT * FROM toys WHERE pID = '$pid'";
     $re = $dblink->query($sql);
     $row = $re->fetch_assoc();
 ?>
@@ -77,7 +77,7 @@ require_once './header.php';
     }
 </style>
 <div class="pDetail">
-    <img src="<?=$row['Img']?>" alt="">
+    <img src="./Image/<?=$row['img']?>" alt="">
     <div class="Pcontent">
         <div class="detail-content">
             <span><?=$row['pName']?></span>
@@ -85,11 +85,11 @@ require_once './header.php';
         </div>
         <div class="description">
             <span>Description</span>
-            <p><?=$row['pDescription']?></p>
+            <p></p>
         </div>
         <div class="add-cart">
             <span>Quantity:</span><br>
-            <form action="addCart.php?">
+            <form action="">
                 <input type="number" name="quantity" value="<?=$quantity?>">
                 <input type="text" value="<?=$pid?>" name="id" style="display:none;">
                 <input type="text" value="<?=$update?>" name="update" style="display:none;">
@@ -99,3 +99,5 @@ require_once './header.php';
         </div>
     </div>
 </div>
+
+<?php include_once './footer.php'?>

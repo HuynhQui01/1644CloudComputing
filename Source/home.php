@@ -13,7 +13,7 @@ include_once("./header.php")
                 </p>
             </div>
             <div class="img">
-                <img src="../Image/banner.png" alt="">
+                <img src="./Image/banner.png" alt="">
             </div>
         </div>
         <div class="line"></div>
@@ -32,8 +32,8 @@ $row = $re->fetchAll(PDO::FETCH_ASSOC);
 foreach ($row as $r):
 ?>
             <div class="product">
-                <img src="../Image/<?=$r['img']?>" alt="">
-                <span><a href="./detail.php?id=A01"><?= $r['pName']?></a></span>
+                <img src="./Image/<?=$r['img']?>" alt="">
+                <span><a href="./detail.php?id=<?=$r['pID']?>"><?= $r['pName']?></a></span>
                 <span class="price"><?= $r['pPrice']?> &#8363</span>
             </div>
 <?php 

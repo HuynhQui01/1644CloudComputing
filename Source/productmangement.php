@@ -33,7 +33,7 @@
 
         if (($_FILES['txtImage']['name'] != "")) {
             // Where the file is going to be stored
-            $target_dir = "../Image/";
+            $target_dir = "./Image/";
             $file = $_FILES['txtImage']['name'];
             $path = pathinfo($file);
             $filename = $path['filename'];
@@ -62,11 +62,11 @@
         $storeslq = "INSERT INTO `warehouse`( `storeID`, `pID`, `quantity`, `userID`) VALUES (?,?,?,?)";
         $rest = $dblink->prepare($storeslq);
         $rest->execute(array($storeID,$pID,$quan,$uID));
-        echo print_r($rest->errorInfo());
+        // echo print_r($rest->errorInfo());
     }
     ?>
     <nav>
-        <div><a href="./home.php"><img src="../Image/Screenshot 2023-06-08 155639.jpg" alt=""></a></div>
+        <div><a href="./home.php"><img src="./Image/Screenshot 2023-06-08 155639.jpg" alt=""></a></div>
         <div>
             <span>Product mangement</span>
         </div>
@@ -92,7 +92,7 @@
                 include_once './connectDB.php';
                 $c = new Connect();
                 $dblink = $c->connectToPDO();
-                $address = $_COOKIE['address'];
+                $address = $_COOKIE['address']??"";
                 $sql = "SELECT t.pID, t.pName, t.catID,t.pPrice,t.supID FROM `warehouse` INNER JOIN toys as t ON t.pID = warehouse.pID INNER JOIN user AS u ON u.uID = warehouse.userID WHERE u.address LIKE ?";
                 $re = $dblink->prepare($sql);
                 $re->execute(array("%$address%"));
@@ -162,7 +162,7 @@
 
                 <div class="row py-3">
                     <div class="col-sm-3 offset-5">
-                        <input type="submit" class="btn btn-primary" name="add" id="btnRegister" value="Register">
+                        <input type="submit" class="btn btn-primary" name="add" id="btnRegister" value="Add">
                     </div>
                 </div>
             </form>
