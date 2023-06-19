@@ -11,10 +11,10 @@ class Connect
         // $this->user = "root";
         // $this->passwork = "";
         // $this->dbName = "atn";
-        $this->server = "ohunm00fjsjs1uzy.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-        $this->user = "gtnlyowc48ov4d36";
-        $this->passwork = "tfdvk2obj0legbj6";
-        $this->dbName = "ua5wa52vcbm5hlm2";
+        $this->server = "ik1eybdutgxsm0lo.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+        $this->user = "p3x4bfn5bfv6oy94";
+        $this->passwork = "l1l7k8vmh3tsjpit";
+        $this->dbName = "rwohnvpxr7q77jwv";
     }
     //Option 1: mysqli
     function connectToMySQL():mysqli
