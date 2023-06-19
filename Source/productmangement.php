@@ -30,6 +30,7 @@
         $quan = $_POST['txtQuan'];
         $address = $_COOKIE['address'];
         $uID = $_COOKIE['uID'];
+        $date = new DateTime();
 
         if (($_FILES['txtImage']['name'] != "")) {
             // Where the file is going to be stored
