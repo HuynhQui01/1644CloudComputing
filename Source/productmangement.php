@@ -30,7 +30,7 @@
         $quan = $_POST['txtQuan'];
         $address = $_COOKIE['address'];
         $uID = $_COOKIE['uID'];
-        $date = new DateTime();
+        $date = date('Y-m-d');
 
         if (($_FILES['txtImage']['name'] != "")) {
             // Where the file is going to be stored
@@ -60,9 +60,9 @@
         //     echo "Success";
         // } echo print_r($re->errorInfo());
 
-        $storeslq = "INSERT INTO `warehouse`( `storeID`, `pID`, `quantity`, `userID`) VALUES (?,?,?,?)";
+        $storeslq = "INSERT INTO `warehouse`(`storeID`, `pID`, `quantity`, `userID`, `date`) VALUES (?,?,?,?,?)";
         $rest = $dblink->prepare($storeslq);
-        $rest->execute(array($storeID,$pID,$quan,$uID));
+        $rest->execute(array($storeID,$pID,$quan,$uID,$date));
         // echo print_r($rest->errorInfo());
     }
     ?>
@@ -88,13 +88,14 @@
                     <th>pPrice</th>
                     <th>supID</th>
                     <th>City</th>
+                    <th>Date</th>
                 </thead>
                 <?php
                 include_once './connectDB.php';
                 $c = new Connect();
                 $dblink = $c->connectToPDO();
                 $address = $_COOKIE['address']??"";
-                $sql = "SELECT t.pID, t.pName, t.catID,t.pPrice,t.supID FROM `warehouse` INNER JOIN toys as t ON t.pID = warehouse.pID INNER JOIN user AS u ON u.uID = warehouse.userID WHERE u.address LIKE ?";
+                $sql = "SELECT t.pID, t.pName, t.catID,t.pPrice,t.supID,warehouse.date FROM `warehouse` INNER JOIN toys as t ON t.pID = warehouse.pID INNER JOIN user AS u ON u.uID = warehouse.userID WHERE u.address LIKE ?";
                 $re = $dblink->prepare($sql);
                 $re->execute(array("%$address%"));
                 $row = $re->fetchAll(PDO::FETCH_BOTH);
@@ -107,6 +108,7 @@
                         <td><?= $r['pPrice'] ?></td>
                         <td><?= $r['supID'] ?></td>
                         <td><?=$address?></td>
+                        <td><?=$r['date']?></td>
                     </tbody>
                 <?php
                 endforeach;
